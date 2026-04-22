@@ -2,27 +2,23 @@ import cv2
 import mediapipe as mp
 import mediapipe.python.solutions.hands as mp_hands
 import mediapipe.python.solutions.drawing_utils as mp_draw
-import pygame # Untuk putar musik
+import pygame
 
-# Setup Pygame Audio
 pygame.mixer.init()
-# Pastikan file kicau_mania.mp3 ada di folder yang sama
 try:
     pygame.mixer.music.load("kicau_mania.mp3")
 except:
     print("Peringatan: File kicau_mania.mp3 tidak ditemukan!")
 
-# Setup MediaPipe
 hands = mp_hands.Hands(max_num_hands=2, min_detection_confidence=0.7)
 
-# Buka Webcam & Video Kucing
 cap = cv2.VideoCapture(0)
 cat_video = cv2.VideoCapture("cat_dance.mp4")
 
 show_second_window = False
-is_playing = False # Status musik
+is_playing = False
 
-WIN_W, WIN_H = 600, 450 # Ukuran rapi
+WIN_W, WIN_H = 600, 450
 
 print("--- MODE KICAU MANIA + MUSIK AKTIF ---")
 
@@ -40,25 +36,20 @@ while True:
             mp_draw.draw_landmarks(img, handLms, mp_hands.HAND_CONNECTIONS)
             x_pos = handLms.landmark[8].x 
             
-            # GESTURE TRIGGER
             if x_pos < 0.3 and not show_second_window: 
                 show_second_window = True
-                # Putar musik saat kucing muncul
                 if not is_playing:
-                    pygame.mixer.music.play(-1) # -1 artinya looping terus
+                    pygame.mixer.music.play(-1)
                     is_playing = True
                     
             if x_pos > 0.7 and show_second_window: 
                 show_second_window = False
-                # Stop musik saat kucing hilang
                 pygame.mixer.music.stop()
                 is_playing = False
 
-    # JENDELA 1: FACE CAM
     cv2.imshow("Face Cam", img)
     cv2.moveWindow("Face Cam", 50, 150)
 
-    # JENDELA 2: KUCING JOGET
     if show_second_window:
         ret_cat, cat_frame = cat_video.read()
         if not ret_cat:
