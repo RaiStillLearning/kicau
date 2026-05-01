@@ -1,40 +1,46 @@
-# 🐱 Kicau Mania AI Overlay (Gesture Mode)
+# Kicau Mania AI Overlay (Gesture Controlled)
 
-Proyek filter webcam interaktif berbasis AI yang lagi viral! Aplikasi ini memunculkan video "Kucing Joget" dan memutar musik **Kicau Mania** secara otomatis hanya dengan menggunakan gestur ayunan (swipe) tangan kamu.
+Proyek ini adalah implementasi filter webcam interaktif menggunakan kecerdasan buatan (AI) untuk mendeteksi gestur tangan. Aplikasi akan memunculkan video overlay dan memutar audio secara otomatis saat pengguna melakukan gestur ayunan tangan.
 
-## ✨ Fitur Utama
-- **One-Shot Sync**: Video dan audio berjalan selaras secara otomatis sampai selesai.
-- **AI Hand Tracking**: Deteksi telapak tangan yang presisi menggunakan MediaPipe.
-- **Swipe Gesture**: Ayunkan tangan ke **Kiri** untuk memulai aksi!
-- **Auto-Fix Black Screen**: Menghindari bug layar hitam pada Mac.
+## Deskripsi Teknis
+Aplikasi ini menggunakan MediaPipe Tasks API untuk melakukan pelacakan telapak tangan (Hand Tracking) secara real-time. Logika program telah dioptimalkan untuk menyinkronkan framerate video dengan durasi audio asli untuk memastikan pemutaran yang mulus dan presisi.
 
-## 🚀 Cara Menjalankan dari Awal (Quick Start)
+## Persyaratan Sistem
+Untuk memastikan kompatibilitas pustaka MediaPipe dan OpenCV, disarankan menggunakan versi Python berikut:
+- **Python 3.11** (Sangat Disarankan)
+- **Python 3.12**
+- **Penting:** Saat ini Python 3.14 belum didukung secara penuh oleh MediaPipe dan akan menyebabkan error pada modul pengenalan tangan.
 
-### Untuk Pengguna Mac (Paling Cepat):
-1. **Download & Ekstrak** folder proyek ini.
-2. Buka folder di **Finder**.
-3. Klik kanan file **`Buka_Kicau_Mania.command`** dan pilih **Open**.
-4. Tunggu terminal melakukan instalasi otomatis sampai kamera terbuka. Selesai!
+## Instalasi dan Penggunaan
 
-> **Catatan:** Jika kamera tidak terbuka, berikan izin akses kamera untuk **Terminal** di *System Settings > Privacy & Security > Camera*.
+### Cara Cepat (Khusus macOS)
+1. Buka direktori proyek ini melalui Finder.
+2. Jalankan file `Buka_Kicau_Mania.command` dengan klik kanan dan pilih Open.
+3. Script akan melakukan konfigurasi virtual environment, mengunduh library yang diperlukan, dan mengunduh model AI MediaPipe secara otomatis.
 
-### Untuk Pengguna Windows:
-1. Buka **Command Prompt** atau **PowerShell** di folder proyek.
-2. Buat Virtual Environment: `python -m venv venv`
-3. Aktifkan venv: `venv\Scripts\activate`
-4. Install library: `pip install -r requirements.txt`
-5. Jalankan: `python main.py`
+Catatan: Berikan izin akses kamera pada aplikasi Terminal melalui System Settings > Privacy & Security > Camera jika aplikasi gagal mengakses webcam.
 
-## ✋ Cara Menggunakan di Depan Kamera
-1. Pastikan wajah dan tangan kamu terlihat di kamera.
-2. **Ayunkan telapak tangan** kamu dari arah kanan ke kiri (seperti menyapu layar) secara lebar dan cepat.
-3. Video kucing akan muncul di samping wajahmu dan musik akan berputar otomatis sampai durasi video habis.
+### Instalasi Manual (Windows/Linux/macOS)
+Jika Anda ingin melakukan konfigurasi manual melalui terminal:
+1. Buat virtual environment: `python3 -m venv venv`
+2. Aktifkan venv:
+   - Mac/Linux: `source venv/bin/activate`
+   - Windows: `venv\Scripts\activate`
+3. Install dependensi: `pip install -r requirements.txt`
+4. Jalankan aplikasi: `python main.py`
 
-## 📂 Struktur Proyek
-- `assets/`: Tempat file video (`cat_dance.mp4`) dan musik (`kicau_mania.mp3`).
-- `main.py`: Kode utama aplikasi.
-- `Buka_Kicau_Mania.command`: Script otomatis sekali klik untuk Mac.
-- `requirements.txt`: Daftar library yang dibutuhkan (OpenCV, MediaPipe, Pygame).
+## Panduan Gestur
+Program ini menggunakan deteksi ayunan tangan (swipe) untuk memicu aksi:
+1. Posisikan telapak tangan terlihat jelas di depan kamera.
+2. Lakukan gerakan ayunan dari arah kanan ke kiri secara lebar.
+3. Video dan audio akan diputar satu kali hingga durasi berakhir.
+4. Selama video berlangsung, program akan mengabaikan input gestur lain hingga pemutaran selesai.
+
+## Struktur Direktori
+- `assets/`: Menyimpan file media (video, audio) dan file model AI (`hand_landmarker.task`).
+- `main.py`: Kode logika utama aplikasi menggunakan MediaPipe Tasks API.
+- `Buka_Kicau_Mania.command`: Script otomasi untuk pengguna macOS.
+- `requirements.txt`: Daftar dependensi pustaka Python.
 
 ---
-*Dibuat untuk tujuan edukasi dan hiburan. Selamat mencoba!*
+Proyek ini dikembangkan untuk tujuan eksperimen Computer Vision dan interaksi manusia-komputer.
