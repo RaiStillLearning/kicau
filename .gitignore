@@ -1,0 +1,20 @@
+# Environments
+venv/
+venv_kicau/
+env/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Mac OS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Media/Assets (Opsional: hapus komentar jika tidak ingin upload file besar)
+# assets/*.mp4
+# assets/*.mp3

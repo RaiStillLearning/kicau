@@ -1,37 +1,40 @@
-# 🐱 Kicau Mania AI Overlay (Double Window Mode)
+# 🐱 Kicau Mania AI Overlay (Gesture Mode)
 
-Proyek filter webcam berbasis AI yang lagi viral di TikTok! Aplikasi ini bisa memunculkan video "Kucing Joget" dan memutar musik **Kicau Mania** secara otomatis hanya dengan menggunakan gestur jari kamu.
+Proyek filter webcam interaktif berbasis AI yang lagi viral! Aplikasi ini memunculkan video "Kucing Joget" dan memutar musik **Kicau Mania** secara otomatis hanya dengan menggunakan gestur ayunan (swipe) tangan kamu.
 
-## ✨ Fitur Keren
-- **Dual Window Auto-Layout**: Face Cam dan Video Kucing muncul sejajar rapi secara otomatis tanpa perlu digeser manual.
-- **AI Hand Tracking**: Menggunakan MediaPipe untuk mendeteksi gestur tangan secara real-time.
-- **Gesture Command**: 
-  - 👈 Telunjuk ke **Kiri**: Panggil Kucing + Musik Kicau Mania dimulai!
-  - 👉 Telunjuk ke **Kanan**: Kucing pulang + Musik mati otomatis.
-- **Multi-Hand Detection**: Bisa deteksi dua tangan sekaligus lengkap dengan titik-titik sidik jari AI.
+## ✨ Fitur Utama
+- **One-Shot Sync**: Video dan audio berjalan selaras secara otomatis sampai selesai.
+- **AI Hand Tracking**: Deteksi telapak tangan yang presisi menggunakan MediaPipe.
+- **Swipe Gesture**: Ayunkan tangan ke **Kiri** untuk memulai aksi!
+- **Auto-Fix Black Screen**: Menghindari bug layar hitam pada Mac.
 
-## 🛠️ Persyaratan
-Gunakan **Python 3.11** untuk hasil yang paling stabil.
+## 🚀 Cara Menjalankan dari Awal (Quick Start)
 
-## 🚀 Cara Pakai
+### Untuk Pengguna Mac (Paling Cepat):
+1. **Download & Ekstrak** folder proyek ini.
+2. Buka folder di **Finder**.
+3. Klik kanan file **`Buka_Kicau_Mania.command`** dan pilih **Open**.
+4. Tunggu terminal melakukan instalasi otomatis sampai kamera terbuka. Selesai!
 
-1. **Download/Clone** repo ini ke laptop kamu.
-2. Instal semua library yang diperlukan melalui terminal:
-   ```bash
-   pip install opencv-python mediapipe pygame
-   ```
-3. Pastikan file berikut ada di dalam folder yang sama:
-   - `kicau_mania.py` (Kodenya)
-   - `cat_dance.mp4` (Video kucing joget)
-   - `kicau_mania.mp3` (Audio kicau mania)
+> **Catatan:** Jika kamera tidak terbuka, berikan izin akses kamera untuk **Terminal** di *System Settings > Privacy & Security > Camera*.
 
-4. Jalankan programnya:
-   ```bash
-   python kicau_mania.py
-   ```
+### Untuk Pengguna Windows:
+1. Buka **Command Prompt** atau **PowerShell** di folder proyek.
+2. Buat Virtual Environment: `python -m venv venv`
+3. Aktifkan venv: `venv\Scripts\activate`
+4. Install library: `pip install -r requirements.txt`
+5. Jalankan: `python main.py`
 
-## 📝 Catatan
-Jika jendela video tidak muncul pas di samping, kamu bisa sesuaikan koordinat di bagian `cv2.moveWindow` pada kode `kicau_mania.py` sesuai resolusi layar monitor kamu.
+## ✋ Cara Menggunakan di Depan Kamera
+1. Pastikan wajah dan tangan kamu terlihat di kamera.
+2. **Ayunkan telapak tangan** kamu dari arah kanan ke kiri (seperti menyapu layar) secara lebar dan cepat.
+3. Video kucing akan muncul di samping wajahmu dan musik akan berputar otomatis sampai durasi video habis.
+
+## 📂 Struktur Proyek
+- `assets/`: Tempat file video (`cat_dance.mp4`) dan musik (`kicau_mania.mp3`).
+- `main.py`: Kode utama aplikasi.
+- `Buka_Kicau_Mania.command`: Script otomatis sekali klik untuk Mac.
+- `requirements.txt`: Daftar library yang dibutuhkan (OpenCV, MediaPipe, Pygame).
 
 ---
-Dibuat dengan oleh [boybands](https://github.com)
+*Dibuat untuk tujuan edukasi dan hiburan. Selamat mencoba!*
